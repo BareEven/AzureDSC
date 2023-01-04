@@ -95,8 +95,7 @@ Configuration Deploy-DomainServices
                 DomainName = $domainFQDN
                 Credential = $domainCredential
                 WaitForValidCredentials = $true
-                WaitTimeout = 300
-                isAvailable = $true
+                WaitTimeout = 600
                 DependsOn = '[WindowsFeature]InstallADDS'
             }
             
