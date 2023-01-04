@@ -42,7 +42,7 @@ Configuration Deploy-DomainServices
 
         if($role -eq "pdc") {
             DnsServerAddress SetDNS { 
-                Address = @('127.0.0.1',$otherDNSip)
+                Address = '127.0.0.1'
                 InterfaceAlias = $interfaceAlias
                 AddressFamily = 'IPv4'
                 DependsOn = '[WindowsFeature]InstallDNS'
