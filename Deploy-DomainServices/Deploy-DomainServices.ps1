@@ -47,7 +47,7 @@ Configuration Deploy-DomainServices
         }
 
         DnsServerAddress SetDNS { 
-            Address = $dns
+            Address = (if($role -eq "pdc"){ $dns } else { $otherDNSip })
             InterfaceAlias = $interfaceAlias
             AddressFamily = 'IPv4'
             DependsOn = '[WindowsFeature]InstallDNS'
@@ -95,7 +95,7 @@ Configuration Deploy-DomainServices
                 DomainName = $domainFQDN
                 Credential = $domainCredential
                 WaitForValidCredentials = $true
-                WaitTimeout = 600
+                WaitTimeout = 1800
                 DependsOn = '[WindowsFeature]InstallADDS'
             }
             
@@ -108,10 +108,17 @@ Configuration Deploy-DomainServices
                 SysvolPath = 'C:\SYSVOL'
                 DependsOn = '[WaitForADDomain]ADForestReady','[DnsServerAddress]SetDNS', '[WindowsFeature]InstallADDS'
             }
-
+            
+            DnsServerAddress correctDNS { 
+                Address = (if($role -eq "pdc"){ $dns } else { $otherDNSip })
+                InterfaceAlias = $dns
+                AddressFamily = 'IPv4'
+                DependsOn = '[ADDomainController]AddOtherDC'
+            }
+            
             PendingReboot RebootAfterCreatingDC {
                 Name = 'RebootAfterCreatingADForest'
-                DependsOn = '[ADDomainController]AddOtherDC'
+                DependsOn = '[ADDomainController]AddOtherDC',"[DnsServerAddress]correctDNS"
             }
         }
     }
