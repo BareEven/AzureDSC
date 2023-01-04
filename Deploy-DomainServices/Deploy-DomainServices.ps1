@@ -119,7 +119,7 @@ Configuration Deploy-DomainServices
             }
             
             DnsServerAddress correctDNS { 
-                Address = (if($role -eq "pdc"){ $dns } else { $otherDNSip })
+                Address = $otherDNSip
                 InterfaceAlias = $dns
                 AddressFamily = 'IPv4'
                 DependsOn = '[ADDomainController]AddOtherDC'
