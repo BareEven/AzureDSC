@@ -47,14 +47,14 @@ Configuration Deploy-DomainServices
         }
 
         if($role -eq "pdc") {
-            DnsServerAddress SetPDCDNS { 
+            DnsServerAddress SetDNS { 
                 Address = $dns 
                 InterfaceAlias = $interfaceAlias
                 AddressFamily = 'IPv4'
                 DependsOn = '[WindowsFeature]InstallDNS'
             }
         } else {
-            DnsServerAddress SetSDCDNS { 
+            DnsServerAddress SetDNS { 
                 Address = $otherDNSip
                 InterfaceAlias = $interfaceAlias
                 AddressFamily = 'IPv4'
@@ -83,7 +83,7 @@ Configuration Deploy-DomainServices
                 DatabasePath = 'C:\NTDS'
                 LogPath = 'C:\NTDS'
                 SysvolPath = 'C:\SYSVOL'
-                DependsOn = '[DnsServerAddress]SetPDCDNS', '[WindowsFeature]InstallADDS'
+                DependsOn = '[DnsServerAddress]SetDNS', '[WindowsFeature]InstallADDS'
             }
 
             PendingReboot RebootAfterCreatingADForest {
@@ -115,7 +115,7 @@ Configuration Deploy-DomainServices
                 DatabasePath = 'C:\NTDS'
                 LogPath = 'C:\NTDS'
                 SysvolPath = 'C:\SYSVOL'
-                DependsOn = '[WaitForADDomain]ADForestReady','[DnsServerAddress]SDCDNS', '[WindowsFeature]InstallADDS'
+                DependsOn = '[WaitForADDomain]ADForestReady','[DnsServerAddress]setDNS', '[WindowsFeature]InstallADDS'
             }
             
             DnsServerAddress correctDNS { 
