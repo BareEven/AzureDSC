@@ -114,7 +114,7 @@ Configuration Deploy-DomainServices
             
             PendingReboot RebootAfterCreatingDC {
                 Name = 'RebootAfterCreatingADForest'
-                DependsOn = '[ADDomainController]AddOtherDC',"[DnsServerAddress]correctDNS"
+                DependsOn = '[ADDomainController]AddOtherDC'
             }
         }
     }
