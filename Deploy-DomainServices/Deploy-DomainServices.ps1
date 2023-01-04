@@ -46,11 +46,20 @@ Configuration Deploy-DomainServices
             DependsOn = '[WindowsFeature]InstallDNS'
         }
 
-        DnsServerAddress SetDNS { 
-            Address = (if($role -eq "pdc"){ $dns } else { $otherDNSip })
-            InterfaceAlias = $interfaceAlias
-            AddressFamily = 'IPv4'
-            DependsOn = '[WindowsFeature]InstallDNS'
+        if($role -eq "pdc") {
+            DnsServerAddress SetPDCDNS { 
+                Address = $dns 
+                InterfaceAlias = $interfaceAlias
+                AddressFamily = 'IPv4'
+                DependsOn = '[WindowsFeature]InstallDNS'
+            }
+        } else {
+            DnsServerAddress SetSDCDNS { 
+                Address = $otherDNSip
+                InterfaceAlias = $interfaceAlias
+                AddressFamily = 'IPv4'
+                DependsOn = '[WindowsFeature]InstallDNS'
+            }
         }
 
         WindowsFeature InstallADDS {
