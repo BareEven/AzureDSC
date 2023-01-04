@@ -112,13 +112,6 @@ Configuration Deploy-DomainServices
                 DependsOn = '[WaitForADDomain]ADForestReady','[DnsServerAddress]setDNS', '[WindowsFeature]InstallADDS'
             }
             
-            DnsServerAddress correctDNS { 
-                Address = @('127.0.0.1',$otherDNSip)
-                InterfaceAlias = $interfaceAlias
-                AddressFamily = 'IPv4'
-                DependsOn = '[ADDomainController]AddOtherDC'
-            }
-            
             PendingReboot RebootAfterCreatingDC {
                 Name = 'RebootAfterCreatingADForest'
                 DependsOn = '[ADDomainController]AddOtherDC',"[DnsServerAddress]correctDNS"
