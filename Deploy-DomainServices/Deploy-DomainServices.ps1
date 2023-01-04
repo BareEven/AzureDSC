@@ -83,7 +83,7 @@ Configuration Deploy-DomainServices
                 DatabasePath = 'C:\NTDS'
                 LogPath = 'C:\NTDS'
                 SysvolPath = 'C:\SYSVOL'
-                DependsOn = '[DnsServerAddress]SetDNS', '[WindowsFeature]InstallADDS'
+                DependsOn = '[DnsServerAddress]SetPDCDNS', '[WindowsFeature]InstallADDS'
             }
 
             PendingReboot RebootAfterCreatingADForest {
@@ -115,7 +115,7 @@ Configuration Deploy-DomainServices
                 DatabasePath = 'C:\NTDS'
                 LogPath = 'C:\NTDS'
                 SysvolPath = 'C:\SYSVOL'
-                DependsOn = '[WaitForADDomain]ADForestReady','[DnsServerAddress]SetDNS', '[WindowsFeature]InstallADDS'
+                DependsOn = '[WaitForADDomain]ADForestReady','[DnsServerAddress]SDCDNS', '[WindowsFeature]InstallADDS'
             }
             
             DnsServerAddress correctDNS { 
