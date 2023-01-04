@@ -20,12 +20,6 @@ Configuration Deploy-DomainServices
     [String] $domainNetBIOSName = (Get-NetBIOSName -DomainFQDN $domainFQDN)
     [System.Management.Automation.PSCredential] $domainCredential = New-Object System.Management.Automation.PSCredential ("${domainNetBIOSName}\$($adminCredential.UserName)", $adminCredential.Password)
 
-    if($otherDNSip) {
-        $dns = @("127.0.0.1",$otherDNSip)
-    } else {
-        $dns = "127.0.0.1"
-    }
-
     $interface = Get-NetAdapter | Where-Object Name -Like "Ethernet*" | Select-Object -First 1
     $interfaceAlias = $($interface.Name)
 
@@ -48,7 +42,7 @@ Configuration Deploy-DomainServices
 
         if($role -eq "pdc") {
             DnsServerAddress SetDNS { 
-                Address = $dns 
+                Address = @('127.0.0.1',$otherDNSip)
                 InterfaceAlias = $interfaceAlias
                 AddressFamily = 'IPv4'
                 DependsOn = '[WindowsFeature]InstallDNS'
@@ -119,8 +113,8 @@ Configuration Deploy-DomainServices
             }
             
             DnsServerAddress correctDNS { 
-                Address = $otherDNSip
-                InterfaceAlias = $dns
+                Address = @('127.0.0.1',$otherDNSip)
+                InterfaceAlias = $interfaceAlias
                 AddressFamily = 'IPv4'
                 DependsOn = '[ADDomainController]AddOtherDC'
             }
