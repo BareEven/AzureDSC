@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>DSC Community</dc:creator>
+  <dc:description>The ActiveDirectoryDsc module contains DSC resources for deployment and configuration of Active Directory.
+
+These DSC resources allow you to configure new domains, child domains, and high availability domain controllers, establish cross-domain trusts and manage users, groups and OUs.</dc:description>
+  <dc:identifier>ActiveDirectoryDsc</dc:identifier>
+  <version>6.3.0-preview0002</version>
+  <keywords>DesiredStateConfiguration DSC DSCResourceKit DSCResource PSModule PSIncludes_Function PSFunction_Find-DomainController PSCommand_Find-DomainController PSIncludes_DscResource PSDscResource_MSFT_ADComputer PSDscResource_MSFT_ADDomain PSDscResource_MSFT_ADDomainController PSDscResource_MSFT_ADDomainControllerProperties PSDscResource_MSFT_ADDomainDefaultPasswordPolicy PSDscResource_MSFT_ADDomainFunctionalLevel PSDscResource_MSFT_ADDomainTrust PSDscResource_MSFT_ADFineGrainedPasswordPolicy PSDscResource_MSFT_ADForestFunctionalLevel PSDscResource_MSFT_ADForestProperties PSDscResource_MSFT_ADGroup PSDscResource_MSFT_ADKDSKey PSDscResource_MSFT_ADManagedServiceAccount PSDscResource_MSFT_ADObjectEnabledState PSDscResource_MSFT_ADObjectPermissionEntry PSDscResource_MSFT_ADOptionalFeature PSDscResource_MSFT_ADOrganizationalUnit PSDscResource_MSFT_ADReplicationSite PSDscResource_MSFT_ADReplicationSiteLink PSDscResource_MSFT_ADReplicationSubnet PSDscResource_MSFT_ADServicePrincipalName PSDscResource_MSFT_ADUser PSDscResource_MSFT_WaitForADDomain</keywords>
+  <lastModifiedBy>NuGet.Build.Tasks.Pack, Version=6.2.0.146, Culture=neutral, PublicKeyToken=31bf3856ad364e35;</lastModifiedBy>
+</coreProperties>

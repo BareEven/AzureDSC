@@ -57,4 +57,3 @@ Configuration ADServicePrincipalName_AddComputerServicePrincipalName_Config
     }
 }
 
-

@@ -7,7 +7,7 @@
     added to the domain. These pre-created computer objects can be used with offline
     domain join, unsecure domain Join and RODC domain join scenarios.
 
-    >**Note:** An Offline Domain Join (ODJ) request file will only be created
+    >Note: An Offline Domain Join (ODJ) request file will only be created
     >when a computer account is first created in the domain. Setting an Offline
     >Domain Join (ODJ) Request file path for a configuration that updates a
     >computer account that already exists, or restore it from the recycle bin
@@ -16,9 +16,9 @@
     ## Requirements
 
     * Target machine must be running Windows Server 2008 R2 or later.
-    * The parameter `RestoreFromRecycleBin` requires that the feature Recycle
+    * The parameter RestoreFromRecycleBin requires that the feature Recycle
       Bin has been enabled prior to an object is deleted. If the feature
-      Recycle Bin is disabled then the property `msDS-LastKnownRDN` is not
+      Recycle Bin is disabled then the property msDS-LastKnownRDN is not
       added the deleted object.
 
 .PARAMETER ComputerName
@@ -62,7 +62,7 @@
     Specifies the Active Directory Domain Services instance to connect to perform the task.
 
 .PARAMETER Credential
-    Write - PSCredential
+    Write - Instance
     Specifies the user account credentials to use to perform the task.
 
 .PARAMETER RequestFile
@@ -119,15 +119,15 @@ Configuration ADComputer_AddComputerAccount_Config
     {
         ADComputer 'CreateEnabled_SQL01'
         {
-            ComputerName = 'SQL01'
+            ComputerName         = 'SQL01'
 
             PsDscRunAsCredential = $Credential
         }
 
         ADComputer 'CreateEnabled_SQL02'
         {
-            ComputerName      = 'SQL02'
-            EnabledOnCreation = $true
+            ComputerName         = 'SQL02'
+            EnabledOnCreation    = $true
 
             PsDscRunAsCredential = $Credential
         }
@@ -155,8 +155,8 @@ Configuration ADComputer_AddComputerAccountDisabled_Config
     {
         ADComputer 'CreateDisabled'
         {
-            ComputerName      = 'CLU_CNO01'
-            EnabledOnCreation = $false
+            ComputerName         = 'CLU_CNO01'
+            EnabledOnCreation    = $false
 
             PsDscRunAsCredential = $Credential
         }
@@ -271,5 +271,4 @@ Configuration ADComputer_CreateClusterComputerAccount_Config
         }
     }
 }
-
 

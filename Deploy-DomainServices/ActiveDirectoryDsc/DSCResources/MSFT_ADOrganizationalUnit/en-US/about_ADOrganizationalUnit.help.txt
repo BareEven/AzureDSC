@@ -9,8 +9,8 @@
     ## Requirements
 
     * Target machine must be running Windows Server 2008 R2 or later.
-    * The parameter `RestoreFromRecycleBin` requires that the feature Recycle Bin has been enabled prior to an object being
-      deleted. If the Recycle Bin feature is disabled then the property `msDS-LastKnownRDN` is not added the deleted object.
+    * The parameter RestoreFromRecycleBin requires that the feature Recycle Bin has been enabled prior to an object being
+      deleted. If the Recycle Bin feature is disabled then the property msDS-LastKnownRDN is not added the deleted object.
 
 .PARAMETER Name
     Key - String
@@ -26,8 +26,12 @@
     Specifies whether the Organizational Unit (OU) should be present or absent. Default value is 'Present'.
 
 .PARAMETER Credential
-    Write - PSCredential
+    Write - Instance
     The credential to be used to perform the operation on Active Directory.
+
+.PARAMETER DomainController
+    Write - String
+    Specifies the Active Directory Domain Services instance to use to perform the task.
 
 .PARAMETER ProtectedFromAccidentalDeletion
     Write - Boolean
@@ -40,6 +44,10 @@
 .PARAMETER RestoreFromRecycleBin
     Write - Boolean
     Try to restore the Organizational Unit (OU) from the recycle bin before creating a new one.
+
+.PARAMETER DistinguishedName
+    Read - String
+    Returns the X.500 distinguished name of the Organizational Unit.
 
 .EXAMPLE 1
 
@@ -81,5 +89,4 @@ Configuration ADOrganizationalUnit_CreateADOU_Config
         }
     }
 }
-
 

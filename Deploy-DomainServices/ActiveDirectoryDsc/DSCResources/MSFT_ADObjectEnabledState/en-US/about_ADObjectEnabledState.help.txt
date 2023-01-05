@@ -2,12 +2,12 @@
     ADObjectEnabledState
 
 .DESCRIPTION
-    This resource enforces the property `Enabled` on the object class *Computer*.
+    This resource enforces the property Enabled on the object class Computer.
 
-    >This resource could support other object classes like *msDS-ManagedServiceAccount*,
-    >*msDS-GroupManagedServiceAccount*, and *User*. But these object classes
+    >This resource could support other object classes like msDS-ManagedServiceAccount,
+    >msDS-GroupManagedServiceAccount, and User. But these object classes
     >are not yet supported due to that other resources already enforces the
-    >`Enabled` property. If this resource should support another object class,
+    >Enabled property. If this resource should support another object class,
     >then it should be made so that only one resource enforces the enabled
     >property. This is to prevent a potential "ping-pong" behavior if both
     >resource would be used in a configuration.
@@ -34,7 +34,7 @@
     Specifies the Active Directory Domain Services instance to connect to perform the task.
 
 .PARAMETER Credential
-    Write - PSCredential
+    Write - Instance
     Specifies the user account credentials to use to perform the task.
 
 .EXAMPLE 1
@@ -151,5 +151,4 @@ Configuration ADObjectEnabledState_EnabledPrestagedClusterComputerAccount_Config
         }
     }
 }
-
 

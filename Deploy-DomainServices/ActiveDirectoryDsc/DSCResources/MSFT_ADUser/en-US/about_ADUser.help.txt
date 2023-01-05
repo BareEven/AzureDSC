@@ -7,9 +7,9 @@
     ## Requirements
 
     * Target machine must be running Windows Server 2008 R2 or later.
-    * The parameter `RestoreFromRecycleBin` requires that the feature Recycle
+    * The parameter RestoreFromRecycleBin requires that the feature Recycle
       Bin has been enabled prior to an object is deleted. If the feature
-      Recycle Bin is disabled then the property `msDS-LastKnownRDN` is not
+      Recycle Bin is disabled then the property msDS-LastKnownRDN is not
       added the deleted object.
 
 .PARAMETER DomainName
@@ -21,7 +21,7 @@
     Specifies the Security Account Manager (SAM) account name of the user (ldapDisplayName 'sAMAccountName').
 
 .PARAMETER Password
-    Write - PSCredential
+    Write - Instance
     Specifies a new password value for the account.
 
 .PARAMETER Ensure
@@ -202,7 +202,7 @@
     Specifies the Active Directory Domain Services instance to use to perform the task.
 
 .PARAMETER Credential
-    Write - PSCredential
+    Write - Instance
     Specifies the user account credentials to use to perform this task.
 
 .PARAMETER PasswordAuthentication
@@ -232,11 +232,11 @@
 
 .PARAMETER AccountNotDelegated
     Write - Boolean
-    Indicates whether the security context of the user is delegated to a service.  When this parameter is set to true, the security context of the account is not delegated to a service even when the service account is set as trusted for Kerberos delegation. This parameter sets the AccountNotDelegated property for an Active Directory account. This parameter also sets the ADS_UF_NOT_DELEGATED flag of the Active Directory User Account Control (UAC) attribute.
+    Indicates whether the security context of the user is delegated to a service.  When this parameter is set to true, the security context of the account is not delegated to a service even when the service account is set as trusted for Kerberos delegation. This parameter sets the AccountNotDelegated property for an Active Directory account. This parameter also sets the ADSUFNOT_DELEGATED flag of the Active Directory User Account Control (UAC) attribute.
 
 .PARAMETER AllowReversiblePasswordEncryption
     Write - Boolean
-    Indicates whether reversible password encryption is allowed for the account. This parameter sets the AllowReversiblePasswordEncryption property of the account. This parameter also sets the ADS_UF_ENCRYPTED_TEXT_PASSWORD_ALLOWED flag of the Active Directory User Account Control (UAC) attribute.
+    Indicates whether reversible password encryption is allowed for the account. This parameter sets the AllowReversiblePasswordEncryption property of the account. This parameter also sets the ADSUFENCRYPTEDTEXTPASSWORD_ALLOWED flag of the Active Directory User Account Control (UAC) attribute.
 
 .PARAMETER CompoundIdentitySupported
     Write - Boolean
@@ -248,7 +248,7 @@
 
 .PARAMETER SmartcardLogonRequired
     Write - Boolean
-    Specifies whether a smart card is required to logon. This parameter sets the SmartCardLoginRequired property for a user object. This parameter also sets the ADS_UF_SMARTCARD_REQUIRED flag of the Active Directory User Account Control attribute.
+    Specifies whether a smart card is required to logon. This parameter sets the SmartCardLoginRequired property for a user object. This parameter also sets the ADSUFSMARTCARD_REQUIRED flag of the Active Directory User Account Control attribute.
 
 .PARAMETER ThumbnailPhoto
     Write - String
@@ -382,5 +382,4 @@ Configuration ADUser_RemoveThumbnailPhoto_Config
         }
     }
 }
-
 

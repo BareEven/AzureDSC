@@ -2,7 +2,7 @@
     ADDomain
 
 .DESCRIPTION
-    The ADDomain resource creates a new domain in a new forest or a child domain in an existing forest. While it is possible to set the forest functional level and the domain functional level during deployment with this resource the common restrictions apply. For more information see [TechNet](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-functional-levels).
+    The ADDomain resource creates a new domain in a new forest or a child domain in an existing forest. While it is possible to set the forest functional level and the domain functional level during deployment with this resource the common restrictions apply. For more information see https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-functional-levels.
 
     ## Requirements
 
@@ -13,11 +13,11 @@
     The fully qualified domain name (FQDN) of a new domain. If setting up a child domain this must be set to a single-label DNS name.
 
 .PARAMETER Credential
-    Required - PSCredential
+    Required - Instance
     Specifies the user name and password that corresponds to the account used to install the domain controller. These are only used when adding a child domain and these credentials need the correct permission in the parent domain. This will not be created as a user in the new domain. The domain administrator password will be the same as the password of the local Administrator of this node.
 
 .PARAMETER SafeModeAdministratorPassword
-    Required - PSCredential
+    Required - Instance
     Password for the administrator account when the computer is started in Safe Mode.
 
 .PARAMETER ParentDomainName
@@ -29,7 +29,7 @@
     NetBIOS name for the new domain.
 
 .PARAMETER DnsDelegationCredential
-    Write - PSCredential
+    Write - Instance
     Credential used for creating DNS delegation.
 
 .PARAMETER DatabasePath
@@ -116,7 +116,9 @@ Configuration ADDomain_NewForest_Config
 .EXAMPLE 2
 
 This configuration will create a new child domain in an existing forest with
-a Domain Functional Level of Windows Server 2012R2.
+a Domain Functional Level of Windows Server 2016 (WinThreshold).
+The credential parameter must contain the domain qualified credentials of a
+user in the forest who has permissions to create a new child domain.
 
 Configuration ADDomain_NewChildDomain_Config
 {
@@ -155,10 +157,9 @@ Configuration ADDomain_NewChildDomain_Config
             DomainName                    = 'child'
             Credential                    = $Credential
             SafemodeAdministratorPassword = $SafeModePassword
-            DomainMode                    = 'Win2012R2'
+            DomainMode                    = 'WinThreshold'
             ParentDomainName              = 'contoso.com'
         }
     }
 }
-
 

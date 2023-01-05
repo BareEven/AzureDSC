@@ -3,7 +3,7 @@
 
 .DESCRIPTION
     This resource enforces the single instance properties of a domain controller.
-    *Properties that must always have a value, but the value can be changed.*
+    Properties that must always have a value, but the value can be changed.
 
     ## Requirements
 
@@ -35,5 +35,4 @@ Configuration ADDomainControllerProperties_SetContentFreshness_Config
         }
     }
 }
-
 

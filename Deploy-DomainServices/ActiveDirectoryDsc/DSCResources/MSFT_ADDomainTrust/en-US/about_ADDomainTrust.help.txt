@@ -2,7 +2,7 @@
     ADDomainTrust
 
 .DESCRIPTION
-    The ADDomainTrust DSC resource will manage Domain Trusts within Active Directory. A trust is a relationship, which you establish between domains or forests. To understand more about trusts in Active Directory, please see the article [Forest Design Models](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/forest-design-models) for more information.
+    The ADDomainTrust DSC resource will manage Domain Trusts within Active Directory. A trust is a relationship, which you establish between domains or forests. To understand more about trusts in Active Directory, please see the article https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/forest-design-models for more information.
 
     ## Requirements
 
@@ -14,7 +14,7 @@
     Specifies whether the computer account is present or absent. Default value is 'Present'.
 
 .PARAMETER TargetCredential
-    Required - PSCredential
+    Required - Instance
     Specifies the credentials to authenticate to the target domain.
 
 .PARAMETER TargetDomainName
@@ -116,5 +116,4 @@ Configuration ADDomainTrust_ExternalInboundTrustWithOptInToRecreate_Config
         }
     }
 }
-
 

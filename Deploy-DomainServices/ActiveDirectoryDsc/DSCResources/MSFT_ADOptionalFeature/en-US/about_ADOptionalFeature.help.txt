@@ -20,7 +20,7 @@
     Specifies the feature to be activated
 
 .PARAMETER EnterpriseAdministratorCredential
-    Required - PSCredential
+    Required - Instance
     Specifies the user account credentials to use to perform this task.
 
 .PARAMETER Enabled
@@ -57,5 +57,4 @@ Configuration ADOptionalFeature_EnableADRecycleBin_Config
         }
     }
 }
-
 

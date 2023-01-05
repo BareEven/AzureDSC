@@ -10,7 +10,7 @@
     * Target machine must be running Windows Server 2008 R2 or later.
 
 .PARAMETER Credential
-    Write - PSCredential
+    Write - Instance
     Specifies the user account credentials to use to perform this task.
 
 .PARAMETER ForestName
@@ -94,7 +94,7 @@ Configuration ADForestProperties_AddRemoveForestProperties_Config
 This configuration will manage the Tombstone Lifetime setting of the
 Active Directory forest.
 
-Configuration ADForestProperties_AddRemoveForestProperties_Config
+Configuration ADForestProperties_TombstoneLifetime_Config
 {
     Import-DscResource -ModuleName ActiveDirectoryDsc
 
@@ -107,5 +107,4 @@ Configuration ADForestProperties_AddRemoveForestProperties_Config
         }
     }
 }
-
 
