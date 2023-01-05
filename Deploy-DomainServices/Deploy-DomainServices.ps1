@@ -95,7 +95,6 @@ Configuration Deploy-DomainServices
         } else {
             WaitForADDomain ADForestReady {
                 DomainName = $domainFQDN
-                WaitTimeout = 600
                 RestartCount = 5
                 Credential = $domainCredential
                 WaitForValidCredentials = $true
