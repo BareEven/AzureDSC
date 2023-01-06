@@ -66,7 +66,7 @@ Configuration Deploy-DomainServices
         Disk ADDataDisk {
             DiskId = 2
             DriveLetter = "F"
-            DependsOn = "[WaitForDisk]Disk2"
+            DependsOn = "[WaitForDisk]waitForDisk2"
         }
 
         WindowsFeature InstallADDS {
