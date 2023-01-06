@@ -1,1 +1,1 @@
-{"Modules":["ActiveDirectoryDsc","ComputerManagementDsc","NetworkingDsc"]}
+{"Modules":["ActiveDirectoryDsc","ComputerManagementDsc","NetworkingDsc","StorageDsc"]}
