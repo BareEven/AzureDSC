@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>StorageDsc</id>
+    <version>5.1.0-preview0001</version>
+    <authors>DSC Community</authors>
+    <owners>DSC Community</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/dsccommunity/StorageDsc/blob/main/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/dsccommunity/StorageDsc</projectUrl>
+    <iconUrl>https://dsccommunity.org/images/DSC_Logo_300p.png</iconUrl>
+    <description>DSC resources for managing storage on Windows Servers.</description>
+    <releaseNotes>@{RawData=## [5.1.0-preview0001] - 2021-04-10
+
+### Changed
+
+- Renamed `master` branch to `main` - Fixes [Issue #250](https://github.com/dsccommunity/StorageDsc/issues/250).
+- Added support for publishing code coverage to `CodeCov.io` and
+  Azure Pipelines - Fixes [Issue #255](https://github.com/dsccommunity/StorageDsc/issues/255).
+- Updated build to use `Sampler.GitHubTasks` - Fixes [Issue #254](https://github.com/dsccommunity/StorageDsc/issues/254).
+
+### Fixed
+
+- MountImage:
+  - Corrected example `1-MountImage_DismountISO.ps1` for dismounting
+    ISO - Fixes [Issue #221](https://github.com/dsccommunity/StorageDsc/issues/221).
+- Updated `GitVersion.yml` to latest pattern - Fixes [Issue #252](https://github.com/dsccommunity/StorageDsc/issues/252).
+
+; Date=04/10/2021 00:00:00; Version=5.1.0-preview0001; Link=; Data=}</releaseNotes>
+    <copyright>Copyright the DSC Community contributors. All rights reserved.</copyright>
+    <tags>DesiredStateConfiguration DSC DSCResource Disk Storage Partition Volume PSModule PSIncludes_DscResource PSDscResource_DSC_Disk PSDscResource_DSC_DiskAccessPath PSDscResource_DSC_MountImage PSDscResource_DSC_OpticalDiskDriveLetter PSDscResource_DSC_WaitForDisk PSDscResource_DSC_WaitForVolume</tags>
+  </metadata>
+</package>

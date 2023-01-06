@@ -67,7 +67,6 @@ Configuration Deploy-DomainServices
             DiskId = 2
             DriveLetter = "F"
             DependsOn = "[WaitForDisk]Disk2"
-            invalid = "stuff"
         }
 
         WindowsFeature InstallADDS {
