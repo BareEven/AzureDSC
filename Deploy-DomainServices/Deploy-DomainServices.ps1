@@ -15,6 +15,7 @@ Configuration Deploy-DomainServices
     Import-DscResource -ModuleName 'ActiveDirectoryDsc'
     Import-DscResource -ModuleName 'ComputerManagementDsc'
     Import-DscResource -ModuleName 'NetworkingDsc'
+    Import-DscResource -ModuleName 'StorageDsc'
 
     # Create the NetBIOS name and domain credentials based on the domain FQDN
     [System.Management.Automation.PSCredential] $domainCredential = New-Object System.Management.Automation.PSCredential ("$($domainFQDN)`\$($adminCredential.UserName)", $adminCredential.Password)
@@ -55,6 +56,20 @@ Configuration Deploy-DomainServices
             }
         }
 
+        WaitforDisk waitForDisk2
+        {
+            DiskId = 2
+            RetryIntervalSec = 30
+            RetryCount = 20
+        }
+
+        Disk ADDataDisk {
+            DiskId = 2
+            DriveLetter = "F"
+            DependsOn = "[WaitForDisk]Disk2"
+            invalid = "stuff"
+        }
+
         WindowsFeature InstallADDS {
             Ensure = 'Present'
             Name = 'AD-Domain-Services'
@@ -73,9 +88,9 @@ Configuration Deploy-DomainServices
                 Credential = $domainCredential
                 SafemodeAdministratorPassword = $domainCredential
                 ForestMode = 'WinThreshold'
-                DatabasePath = 'C:\NTDS'
-                LogPath = 'C:\NTDS'
-                SysvolPath = 'C:\SYSVOL'
+                DatabasePath = 'F:\NTDS'
+                LogPath = 'F:\NTDS'
+                SysvolPath = 'F:\SYSVOL'
                 DependsOn = '[DnsServerAddress]SetDNS', '[WindowsFeature]InstallADDS'
             }
 
@@ -106,9 +121,9 @@ Configuration Deploy-DomainServices
                 DomainName = $domainFQDN
                 Credential = $domainCredential
                 SafemodeAdministratorPassword = $domainCredential
-                DatabasePath = 'C:\NTDS'
-                LogPath = 'C:\NTDS'
-                SysvolPath = 'C:\SYSVOL'
+                DatabasePath = 'F:\NTDS'
+                LogPath = 'F:\NTDS'
+                SysvolPath = 'F:\SYSVOL'
                 DependsOn = '[WaitForADDomain]ADForestReady','[DnsServerAddress]setDNS', '[WindowsFeature]InstallADDS'
             }
             
