@@ -32,13 +32,11 @@ Configuration Deploy-Winbast {
         WindowsFeature InstallDNSTools {
             Ensure = 'Present'
             Name = 'RSAT-DNS-Server'
-            DependsOn = '[WindowsFeature]InstallDNS'
         }
 
         WindowsFeature InstallADDSTools {
             Ensure = 'Present'
             Name = 'RSAT-ADDS-Tools'
-            DependsOn = '[WindowsFeature]InstallADDS'
         }
 
         WaitForADDomain ADForestReady {
@@ -47,7 +45,6 @@ Configuration Deploy-Winbast {
             Credential = $domainCredential
             WaitForValidCredentials = $true
             WaitTimeout = 1800
-            DependsOn = '[WindowsFeature]InstallADDS'
         }
 
         Computer JoinDomain
