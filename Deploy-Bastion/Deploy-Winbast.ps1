@@ -15,8 +15,7 @@ Configuration Deploy-Winbast {
     Import-DscResource -ModuleName 'ActiveDirectoryDsc'
 
     # Create the NetBIOS name and domain credentials based on the domain FQDN
-    [String] $domainNetBIOSName = (Get-NetBIOSName -DomainFQDN $domainFQDN)
-    [System.Management.Automation.PSCredential] $domainCredential = New-Object System.Management.Automation.PSCredential ("${domainNetBIOSName}\$($adminCredential.UserName)", $adminCredential.Password)
+    [System.Management.Automation.PSCredential] $domainCredential = New-Object System.Management.Automation.PSCredential ("$($domainFQDN)\$($adminCredential.UserName)", $adminCredential.Password)
     $interface = Get-NetAdapter | Where-Object Name -Like "Ethernet*" | Select-Object -First 1
     &ipconfig /renew
     $interfaceAlias = $($interface.Name)
